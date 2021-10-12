@@ -1,10 +1,10 @@
-import React,{useRef, useState, useEffect } from "react";
+import React,{ useRef, useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { ChatEngine } from 'react-chat-engine';
 import { auth } from '../firebase';
 
-import { useAuth } from "../contexts/AuthContext";
-import axios from "axios";
+import { useAuth } from '../contexts/AuthContext';
+import axios from 'axios';
 
 const Chats = () => {
     const history = useHistory();
@@ -17,11 +17,11 @@ const Chats = () => {
        history.push('/');
    }
 
-   const getFile = async() => {
-       const response = await fetch(URL);
+   const getFile = async(url) => {
+       const response = await fetch(url);
        const data = await response.blob();
 
-       return new File([data], "userPhoto.jpg", {type: 'image/jpg'})
+       return new File([data], "userPhoto.jpg", { type: 'image/jpg'})
    }
 
    useEffect(() => {
@@ -48,10 +48,10 @@ const Chats = () => {
            formdata.append('secret', user.uid);
 
            getFile(user.photoURL)
-              .then((avatar) =>{
-                  formdata.append('avatar', avatar, avatar.name)
+              .then((avatar) => {
+                  formdata.append('avatar', avatar, avatar.name);
 
-                  axios.post('https://api.chatengine.io/users',
+                  axios.post('https://api.chatengine.io/users/',
                       formdata,
                       {headers: { "private-key": "13e71b0a-7d24-4f8e-b98d-4f4ab46dc72b" } } 
                     )
