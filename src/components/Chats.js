@@ -1,4 +1,4 @@
-import React,{useRef, useState, UseEffect, useEffect } from "react";
+import React,{useRef, useState, useEffect } from "react";
 import { useHistory } from 'react-router-dom';
 import { ChatEngine } from 'react-chat-engine';
 import { auth } from '../firebase';
@@ -63,7 +63,7 @@ const Chats = () => {
 
    if(!user || loading) return 'Loading...';
 
-    return (
+    return (  
         <div className= "chats-page">
             <div className="nav-bar">
                 <div className="logo-tab">
@@ -81,7 +81,7 @@ const Chats = () => {
                userSecret={user.uid}
             />
         </div>
-    );
+    )
 }
 
 export default Chats;
