@@ -1,4 +1,4 @@
-import React,{ useRef, useState, useEffect } from 'react';
+import React,{ useRef, useState, useEffect, } from 'react';
 import { useHistory } from 'react-router-dom';
 import { ChatEngine } from 'react-chat-engine';
 import { auth } from '../firebase';
@@ -9,8 +9,8 @@ import axios from 'axios';
 const Chats = () => {
     const history = useHistory();
     const { user } = useAuth();
-    const [loading, setLoading] = useState(true);
-
+    const [loading, setLoading] = useState(false);
+    
    const handleLogout = async () => {
        await auth.signOut();
        
@@ -21,7 +21,7 @@ const Chats = () => {
        const response = await fetch(url);
        const data = await response.blob();
 
-       return new File([data], "userPhoto.jpg", { type: 'image/jpg'})
+       return new File([data], "userPhoto.jpg", { type: 'image/jpeg'})
    }
 
    useEffect(() => {
@@ -31,7 +31,7 @@ const Chats = () => {
          return;
      }
 
-     axios.get('https://api.chatengine.io/users/me', {
+     axios.get('https://api.chatengine.io/users/me/', {
          headers: {
              "project-id": "2df2c1ed-b3a0-40f4-bc2b-0d9b36edd65e",
              "user-name": user.email,
