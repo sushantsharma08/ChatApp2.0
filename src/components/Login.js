@@ -24,11 +24,11 @@ const Login = () => {
                      <FacebookOutlined /> Sign In with Facebook
                  </div>
                      <br/><br/>
-                 <div
+                 {/* <div
                    className="login-button instagram"
                  >
-                     <InstagramOutlined /> Sign In with Instagram
-                 </div>
+                     <InstagramOutlined />  Sign In with Instagram
+                 </div> */}
 
             </div>
         </div>
